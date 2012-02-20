@@ -14,25 +14,24 @@
  *     Jean-Michel Lemieux and Jeff McAffer - initial API and implementation
  *     Chris Aniszczyk - edits for the second edition
  *******************************************************************************/
-package org.eclipsercp.hyperbola;
+package org.eclipsercp.hyperbola.model;
 
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
-import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+public class Presence {
+	public static final Presence ONLINE = new Presence("Online");
 
-public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
+	public static final Presence AWAY = new Presence("Away");
 
-	private static final String PERSPECTIVE_ID = "org.eclipsercp.hyperbola.perspective";
+	public static final Presence DO_NOT_DISTURB = new Presence("Do Not Disturb");
 
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
-		return new ApplicationWorkbenchWindowAdvisor(configurer);
+	public static final Presence INVISIBLE = new Presence("Offline");
+
+	private String value;
+
+	private Presence(String value) {
+		this.value = value;
 	}
 
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
+	public String toString() {
+		return value;
 	}
-	
-
 }

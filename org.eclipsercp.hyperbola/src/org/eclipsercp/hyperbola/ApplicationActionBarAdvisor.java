@@ -17,8 +17,13 @@
 package org.eclipsercp.hyperbola;
 
 import org.eclipse.jface.action.GroupMarker;
+import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.swt.widgets.TrayItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
@@ -30,6 +35,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	private IWorkbenchAction exitAction;
 	private IWorkbenchAction aboutAction;
+	private IWorkbenchAction addContactAction;
+	private IWorkbenchAction chatAction;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -40,16 +47,44 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		register(exitAction);
 		aboutAction = ActionFactory.ABOUT.create(window);
 		register(aboutAction);
+		addContactAction = new AddContactAction(window);
+		register(addContactAction);
+		chatAction = new ChatAction(window);
+		register(chatAction);
+		
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager hyperbolaMenu = new MenuManager("&Purple", "purple");
+		hyperbolaMenu.add(chatAction);
+		hyperbolaMenu.add(new Separator());
+		hyperbolaMenu.add(addContactAction);
+		hyperbolaMenu.add(new Separator());
 		hyperbolaMenu.add(exitAction);
 		MenuManager helpMenu = new MenuManager("&Help", "help");
 		helpMenu.add(aboutAction);
 		menuBar.add(hyperbolaMenu);
-		hyperbolaMenu.add(helpMenu);
+		menuBar.add(helpMenu);
+	}
 
+		
+
+	protected void fillCoolBar(ICoolBarManager coolBar){
+		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
+		coolBar.add(toolbar);
+		toolbar.add(addContactAction);
+		
+		//toolbar = new ToolBarManager(coolBar.getStyle());
+		//coolBar.add(toolbar);
+		
+		//toolbar.add(chatAction);
+	}
+
+	public void fillTrayItem(IMenuManager trayItem) {
+		trayItem.add(aboutAction);
+		trayItem.add(exitAction);
+		//trayItem.add(new Separator());
+		//trayItem.add(addContactAction);
 		
 	}
 

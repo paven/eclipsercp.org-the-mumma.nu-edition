@@ -6,5 +6,7 @@ public interface IImageKeys {
 	public static final String DO_NOT_DISTURB = "icons/dnd.gif";
 	public static final String GROUP = "icons/groups.gif";
 	public static final String AWAY = "icons/away.gif";
+	public static final String CHAT = "icons/chat.gif";
+	public static final String ADD_CONTACT = null;
 
 }

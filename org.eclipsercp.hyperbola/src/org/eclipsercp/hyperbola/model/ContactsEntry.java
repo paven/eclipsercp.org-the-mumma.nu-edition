@@ -14,25 +14,51 @@
  *     Jean-Michel Lemieux and Jeff McAffer - initial API and implementation
  *     Chris Aniszczyk - edits for the second edition
  *******************************************************************************/
-package org.eclipsercp.hyperbola;
+package org.eclipsercp.hyperbola.model;
 
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
-import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+public class ContactsEntry extends Contact {
 
-public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
+	private final String name;
 
-	private static final String PERSPECTIVE_ID = "org.eclipsercp.hyperbola.perspective";
+	private final String nickname;
 
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
-		return new ApplicationWorkbenchWindowAdvisor(configurer);
+	private final String server;
+
+	private Presence presence;
+
+	private final ContactsGroup group;
+
+	public ContactsEntry(ContactsGroup group, String name, String nickname,
+			String server) {
+		this.group = group;
+		this.name = name;
+		this.nickname = nickname;
+		this.server = server;
+		this.presence = Presence.INVISIBLE;
 	}
 
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
+	public Presence getPresence() {
+		return presence;
 	}
-	
 
+	public void setPresence(Presence presence) {
+		this.presence = presence;
+		group.fireContactsChanged(this);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public String getServer() {
+		return server;
+	}
+
+	public ContactsGroup getParent() {
+		return group;
+	}
 }

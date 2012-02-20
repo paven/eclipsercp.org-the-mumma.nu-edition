@@ -14,25 +14,12 @@
  *     Jean-Michel Lemieux and Jeff McAffer - initial API and implementation
  *     Chris Aniszczyk - edits for the second edition
  *******************************************************************************/
-package org.eclipsercp.hyperbola;
+package org.eclipsercp.hyperbola.model;
 
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
-import org.eclipse.ui.application.WorkbenchAdvisor;
-import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+import org.eclipse.core.runtime.PlatformObject;
 
-public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
+public abstract class Contact extends PlatformObject {
+	public abstract String getName();
 
-	private static final String PERSPECTIVE_ID = "org.eclipsercp.hyperbola.perspective";
-
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
-		return new ApplicationWorkbenchWindowAdvisor(configurer);
-	}
-
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
-	}
-	
-
+	public abstract ContactsGroup getParent();
 }

@@ -22,8 +22,8 @@ import org.eclipse.ui.IPerspectiveFactory;
 public class Perspective implements IPerspectiveFactory {
 
 	public void createInitialLayout(IPageLayout layout) {
-		layout.setEditorAreaVisible(true); 
-		//layout.addView(ContactsView.ID, IPageLayout.LEFT, 1.0F, layout.getEditorArea()); //Lägger till contacts viwe som ett internt fönster
-		layout.addStandaloneView(ContactsView.ID, false, IPageLayout.LEFT, 0.50f, layout.getEditorArea()); //Gör så att contactsview tar upp hela fönstret och är ensamt.
+		layout.setEditorAreaVisible(false);
+		layout.addStandaloneView(ContactsView.ID, false, IPageLayout.LEFT,
+				1.0f, layout.getEditorArea());
 	}
 }

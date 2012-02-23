@@ -16,31 +16,29 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
-import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.swt.widgets.TrayItem;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
-import org.eclipse.ui.internal.about.AboutAction;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
-
-	private IWorkbenchAction exitAction;
-	private IWorkbenchAction aboutAction;
-	private IWorkbenchAction addContactAction;
-	private IWorkbenchAction chatAction;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
 	}
+
+	private IWorkbenchAction exitAction;
+
+	private IWorkbenchAction aboutAction;
+
+	private AddContactAction addContactAction;
 
 	protected void makeActions(IWorkbenchWindow window) {
 		exitAction = ActionFactory.QUIT.create(window);
@@ -49,15 +47,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		register(aboutAction);
 		addContactAction = new AddContactAction(window);
 		register(addContactAction);
-		chatAction = new ChatAction(window);
-		register(chatAction);
-		
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
-		MenuManager hyperbolaMenu = new MenuManager("&Purple", "purple");
-		hyperbolaMenu.add(chatAction);
-		hyperbolaMenu.add(new Separator());
+		MenuManager hyperbolaMenu = new MenuManager("&Hyperbola", "hyperbola");
 		hyperbolaMenu.add(addContactAction);
 		hyperbolaMenu.add(new Separator());
 		hyperbolaMenu.add(exitAction);
@@ -67,25 +60,14 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		menuBar.add(helpMenu);
 	}
 
-		
-
-	protected void fillCoolBar(ICoolBarManager coolBar){
+	protected void fillCoolBar(ICoolBarManager coolBar) {
 		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
 		coolBar.add(toolbar);
 		toolbar.add(addContactAction);
-		
-		//toolbar = new ToolBarManager(coolBar.getStyle());
-		//coolBar.add(toolbar);
-		
-		//toolbar.add(chatAction);
 	}
 
-	public void fillTrayItem(IMenuManager trayItem) {
+	protected void fillTrayItem(IMenuManager trayItem) {
 		trayItem.add(aboutAction);
 		trayItem.add(exitAction);
-		//trayItem.add(new Separator());
-		//trayItem.add(addContactAction);
-		
 	}
-
 }

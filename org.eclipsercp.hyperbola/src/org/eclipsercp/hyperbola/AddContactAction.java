@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Jean-Michel Lemieux, Jeff McAffer, Chris Aniszczyk and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Hyperbola is an RCP application developed for the book
+ *     Eclipse Rich Client Platform - 
+ *         Designing, Coding, and Packaging Java Applications
+ * See http://eclipsercp.org
+ *
+ * Contributors:
+ *     Jean-Michel Lemieux and Jeff McAffer - initial API and implementation
+ *     Chris Aniszczyk - edits for the second edition
+ *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
 import org.eclipse.jface.action.Action;
@@ -12,47 +28,50 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
 
-public class AddContactAction extends Action implements ISelectionListener, ActionFactory.IWorkbenchAction {
+public class AddContactAction extends Action implements ISelectionListener,
+		ActionFactory.IWorkbenchAction {
 	private final IWorkbenchWindow window;
-	public final static String ID = "org.exlipsercp.hyperbola.addContact";
+
+	public final static String ID = "org.eclipsercp.hyperbola.addContact";
+
 	private IStructuredSelection selection;
 
 	public AddContactAction(IWorkbenchWindow window) {
 		this.window = window;
 		setId(ID);
-		setText(ID);
-		setText("&Add a contract to Your contacts list.");
-		//setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipse.hyperbola", IImageKeys.ADD_CONTACT));
+		setText("&Add Contact...");
+		setToolTipText("Add a contact to your contacts list.");
+		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(
+				"org.eclipsercp.hyperbola", IImageKeys.ADD_CONTACT));
 		window.getSelectionService().addSelectionListener(this);
 	}
 
 	public void dispose() {
-		window.getSelectionService().addSelectionListener(this);
-
-		// TODO Auto-generated method stub
-
+		window.getSelectionService().removeSelectionListener(this);
 	}
 
-	public void selectionChanged(IWorkbenchPart part, ISelection incomming) {
-		if (incomming instanceof IStructuredSelection) {
-			selection = (IStructuredSelection) incomming;
-			setEnabled(selection.size() == 1 && selection.getFirstElement() instanceof ContactsGroup);
-		} else
+	public void selectionChanged(IWorkbenchPart part, ISelection incoming) {
+		// Selection containing elements
+		if (incoming instanceof IStructuredSelection) {
+			selection = (IStructuredSelection) incoming;
+			setEnabled(selection.size() == 1
+					&& selection.getFirstElement() instanceof ContactsGroup);
+		} else {
+			// Other selections, for example containing text or of other kinds.
 			setEnabled(false);
-
+		}
 	}
-	
+
 	public void run() {
 		AddContactDialog d = new AddContactDialog(window.getShell());
 		int code = d.open();
-		if(code == Window.OK){
+		if (code == Window.OK) {
 			Object item = selection.getFirstElement();
 			ContactsGroup group = (ContactsGroup) item;
-			ContactsEntry entry = new ContactsEntry(group, d.getNameText(), d.getNickname(), d.getServerText());
+			ContactsEntry entry = new ContactsEntry(group, d.getUserId(), d
+					.getNickname(), d.getServer());
 			group.addEntry(entry);
-			
 		}
-		
 	}
 
 }

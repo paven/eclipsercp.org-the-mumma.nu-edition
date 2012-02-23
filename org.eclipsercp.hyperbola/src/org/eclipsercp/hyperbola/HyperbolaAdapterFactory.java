@@ -2,7 +2,6 @@ package org.eclipsercp.hyperbola;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipsercp.hyperbola.model.*;
@@ -37,7 +36,6 @@ public class HyperbolaAdapterFactory implements IAdapterFactory {
 		}
 		
 		public Object[] getChildren(Object o) {
-			// TODO Auto-generated method stub
 			return ((ContactsGroup)o).getEntries();
 			
 		}
@@ -46,12 +44,12 @@ public class HyperbolaAdapterFactory implements IAdapterFactory {
 	private IWorkbenchAdapter entryAdapter = new IWorkbenchAdapter() {
 		
 		public Object getParent(Object o) {
-			return ((ContactsGroup)o).getParent();
+			return ((ContactsEntry)o).getParent();
 		}
 		
 		public String getLabel(Object o) {
 			ContactsEntry entry = ((ContactsEntry)o);
-			return entry.getName() + '-' + entry.getServer();
+			return entry.getNickname() + " (" + entry.getName() + "@" + entry.getServer() + ")";
 		}
 		
 		public ImageDescriptor getImageDescriptor(Object object) {
@@ -79,7 +77,7 @@ public class HyperbolaAdapterFactory implements IAdapterFactory {
 	}
 
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
-		if((adapterType == IWorkbenchAdapter.class) && (adaptableObject instanceof ContactsGroup))
+		if(adapterType == IWorkbenchAdapter.class && adaptableObject instanceof ContactsGroup)
 			return groupAdapter;
 		if(adapterType == IWorkbenchAdapter.class && adaptableObject instanceof ContactsEntry)
 			return entryAdapter;
@@ -87,7 +85,6 @@ public class HyperbolaAdapterFactory implements IAdapterFactory {
 	}
 
 	public Class[] getAdapterList() {
-		// TODO Auto-generated method stub
 		return new Class[] {IWorkbenchAdapter.class};
 	}
 

@@ -23,7 +23,6 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
-import org.eclipse.swt.events.ShellListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Event;
@@ -43,26 +42,31 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 	private Image statusImage;
 	private TrayItem trayItem;
-	protected ApplicationActionBarAdvisor actionBarAdvisor;
+
 	private Image trayImage;
 	
+	private ApplicationActionBarAdvisor actionBarAdvisor;
+
 	public ApplicationWorkbenchWindowAdvisor(
 			IWorkbenchWindowConfigurer configurer) {
 		super(configurer);
 	}
+	
+	
 
-	public ActionBarAdvisor createActionBarAdvisor(
-			IActionBarConfigurer configurer) {
-		return new ApplicationActionBarAdvisor(configurer);
+	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+		actionBarAdvisor = new ApplicationActionBarAdvisor(configurer);
+		return actionBarAdvisor;
 	}
 
 	public void preWindowOpen() {
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		configurer.setInitialSize(new Point(500, 350));
-		configurer.setShowMenuBar(true);
-		configurer.setShowCoolBar(false);
+
+		configurer.setShowCoolBar(true);
 		configurer.setShowStatusLine(true);
 		configurer.setTitle("Purple Communincator");
+		configurer.setShowMenuBar(true);
 	}
 	
 	public void postWindowOpen(){
@@ -75,13 +79,11 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		}
 	}
 
-	private void initStatusLine() {
-		statusImage = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipsercp.hyperbola", IImageKeys.ONLINE).createImage();
-		IStatusLineManager statusline = getWindowConfigurer().getActionBarConfigurer().getStatusLineManager();
-		statusline.setMessage(statusImage, "Online");
-	}
-	public void hookMinimize(final IWorkbenchWindow window) {
+	private void hookMinimize(final IWorkbenchWindow window) {
 		window.getShell().addShellListener(new ShellAdapter() {
+			public void shellIconified(ShellEvent e){
+				window.getShell().setVisible(false);
+			}
 		});
 		
 		trayItem.addListener(SWT.DefaultSelection, new Listener() {					
@@ -95,7 +97,8 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		});
 	}
 	
-	public void hookPopupMenu(final IWorkbenchWindow window) {
+	private void hookPopupMenu(final IWorkbenchWindow window) {
+		// Add listener for menu pop-up
 		trayItem.addListener(SWT.MenuDetect, new Listener() {
 			public void handleEvent(Event event) {
 				MenuManager trayMenu = new MenuManager();
@@ -118,10 +121,17 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	}
 			
 	public void dispose() {
-		if(trayImage != null){
+		if(statusImage != null)
+			statusImage.dispose();
+		if(trayImage != null)
 			trayImage.dispose();
+		if(trayItem != null)
 			trayItem.dispose();
-		}
-		statusImage.dispose();
+	}
+	
+	private void initStatusLine() {
+		statusImage = AbstractUIPlugin.imageDescriptorFromPlugin("org.eclipsercp.hyperbola", IImageKeys.ONLINE).createImage();
+		IStatusLineManager statusline = getWindowConfigurer().getActionBarConfigurer().getStatusLineManager();
+		statusline.setMessage(statusImage, "Online");
 	}
 }

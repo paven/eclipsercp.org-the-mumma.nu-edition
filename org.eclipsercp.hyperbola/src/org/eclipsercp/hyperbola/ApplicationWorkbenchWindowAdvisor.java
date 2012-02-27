@@ -65,7 +65,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 		configurer.setShowCoolBar(true);
 		configurer.setShowStatusLine(true);
-		configurer.setTitle("Purple Communincator");
 		configurer.setShowMenuBar(true);
 	}
 	

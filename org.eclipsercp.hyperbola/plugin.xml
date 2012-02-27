@@ -38,5 +38,29 @@
             name="Chat">
       </editor>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipsercp.hyperbola.application"
+            name="Purple Scout Chat Client">
+         <property
+               name="appName"
+               value="Purple Scout Chat Client">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/about.gif">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/alt16.gif,icons/alt32.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Purple Scout Communicator was created with cod from eclipsercp.org. ">
+         </property>
+      </product>
+   </extension>
 
 </plugin>

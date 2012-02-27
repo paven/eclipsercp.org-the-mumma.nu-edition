@@ -12,8 +12,7 @@ import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 
-public class ChatAction extends Action implements ISelectionListener,
-		IWorkbenchAction {
+public class ChatAction extends Action implements ISelectionListener, IWorkbenchAction {
 	
 	private final IWorkbenchWindow window;
 	public final static String ID = "org.eclipsercp.hyperbola.chat";

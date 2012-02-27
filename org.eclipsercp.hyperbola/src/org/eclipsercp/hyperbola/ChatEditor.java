@@ -90,9 +90,7 @@ public class ChatEditor extends EditorPart {
 	
 	private void sendMessage() {
 		String body = entry.getText();
-		if ( body.length() == 0)
-			return;
-			
+		if ( body.length() == 0) return;
 		transcript.append(renderMessage(getUser(), body));
 		transcript.append("\n");
 		scrollToEnd();

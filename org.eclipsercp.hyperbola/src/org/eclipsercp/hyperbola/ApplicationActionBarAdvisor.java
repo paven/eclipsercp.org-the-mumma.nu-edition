@@ -40,7 +40,11 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	private AddContactAction addContactAction;
 
+	private ChatAction chatAction;
+
 	protected void makeActions(IWorkbenchWindow window) {
+		chatAction = new ChatAction(window);
+		register(chatAction);
 		exitAction = ActionFactory.QUIT.create(window);
 		register(exitAction);
 		aboutAction = ActionFactory.ABOUT.create(window);
@@ -51,6 +55,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager hyperbolaMenu = new MenuManager("&Hyperbola", "hyperbola");
+		hyperbolaMenu.add(chatAction);
 		hyperbolaMenu.add(addContactAction);
 		hyperbolaMenu.add(new Separator());
 		hyperbolaMenu.add(exitAction);

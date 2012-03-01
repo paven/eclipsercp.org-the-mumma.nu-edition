@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PackageAnalysis>
+    <Package name="org.eclipsercp.hyperbola.model" x="106" y="327"/>
+    <Package name="org.eclipsercp.hyperbola" x="320" y="209">
+        <DependencyLink destination="org.eclipsercp.hyperbola.model"/>
+    </Package>
+</PackageAnalysis>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <CommunicationClass name="org.eclipsercp.hyperbola.AddContactAction"
+        x="63" y="42">
+        <Communication destinationClassName="org.eclipsercp.hyperbola.AddContactDialog"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.model.IContactsListener" x="542" y="45"/>
+    <CommunicationClass name="org.eclipsercp.hyperbola.ChatEditor"
+        x="87" y="481">
+        <Communication destinationClassName="org.eclipsercp.hyperbola.ChatEditorInput"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.Perspective"
+        x="722" y="617"/>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.ApplicationWorkbenchWindowAdvisor"
+        x="719" y="387">
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.ApplicationActionBarAdvisor"
+            endpointName="actionBarAdvisor" kind="Simple"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.ChatAction"
+        x="531" y="640">
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsEntry"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.HyperbolaAdapterFactory" x="775" y="538">
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsEntry"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.ApplicationActionBarAdvisor"
+        x="274" y="598">
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.ChatAction"
+            endpointName="chatAction" kind="Simple"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.AddContactAction"
+            endpointName="addContactAction" kind="Simple"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.ContactsView"
+        x="266" y="232">
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.Session"
+            endpointName="session" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.Session"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.model.Contact"
+        x="36" y="597"/>
+    <CommunicationClass name="org.eclipsercp.hyperbola.model.Session"
+        x="96" y="265">
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="rootGroup" kind="Simple"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.AddContactDialog"
+        x="37" y="163"/>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.model.ContactsGroup" x="270" y="61">
+        <Extension destinationClassName="org.eclipsercp.hyperbola.model.Contact"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="parent" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.IContactsListener"/>
+    </CommunicationClass>
+    <CommunicationClass name="org.eclipsercp.hyperbola.ChatEditorInput"
+        x="63" y="362"/>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.model.ContactsEntry" x="644" y="116">
+        <Extension destinationClassName="org.eclipsercp.hyperbola.model.Contact"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.Presence"
+            endpointName="presence" kind="Simple"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="group" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </CommunicationClass>
+    <CommunicationClass
+        name="org.eclipsercp.hyperbola.ApplicationWorkbenchAdvisor"
+        x="298" y="546"/>
+    <CommunicationClass name="org.eclipsercp.hyperbola.model.Presence"
+        x="196" y="549"/>
+    <CommunicationClass name="org.eclipsercp.hyperbola.Application"
+        x="660" y="275"/>
+    <CommunicationClass name="org.eclipsercp.hyperbola.IImageKeys"
+        x="145" y="592"/>
+</ClassDiagram>

@@ -14,7 +14,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Hyperbola Perspective"
+            name="%perspective.name"
             class="org.eclipsercp.hyperbola.Perspective"
             id="org.eclipsercp.hyperbola.perspective">
       </perspective>
@@ -25,7 +25,7 @@
             class="org.eclipsercp.hyperbola.ContactsView"
             icon="icons/groups.gif"
             id="org.eclipsercp.hyperbola.views.contacts"
-            name="Contacts">
+            name="%view.name">
       </view>
    </extension>
    <extension
@@ -35,7 +35,7 @@
             default="false"
             icon="icons/chat.gif"
             id="org.eclipsercp.hyperbola.editors.chat"
-            name="Chat">
+            name="%editor.name">
       </editor>
    </extension>
    <extension
@@ -58,7 +58,7 @@
          </property>
          <property
                name="aboutText"
-               value="Purple Scout Communicator was created with cod from eclipsercp.org. ">
+               value="%aboutText">
          </property>
       </product>
    </extension>

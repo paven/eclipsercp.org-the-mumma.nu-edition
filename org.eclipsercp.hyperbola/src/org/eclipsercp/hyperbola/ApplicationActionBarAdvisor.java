@@ -54,7 +54,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
-		MenuManager hyperbolaMenu = new MenuManager("&Hyperbola", "hyperbola");
+		MenuManager hyperbolaMenu = new MenuManager("&Communicator", "comunicator");
 		hyperbolaMenu.add(chatAction);
 		hyperbolaMenu.add(addContactAction);
 		hyperbolaMenu.add(new Separator());

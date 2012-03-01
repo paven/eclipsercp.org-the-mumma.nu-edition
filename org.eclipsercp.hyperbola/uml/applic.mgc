@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="org.eclipsercp.hyperbola.AddContactAction" x="832" y="237">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.AddContactDialog"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.IContactsListener"
+        x="307" y="412">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ChatEditor" x="791" y="446">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.ChatEditorInput"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.Perspective" x="882" y="627">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ChatAction" x="369" y="58">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsEntry"/>
+    </Class>
+    <Class
+        name="org.eclipsercp.hyperbola.ApplicationWorkbenchWindowAdvisor"
+        x="713" y="40">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.ApplicationActionBarAdvisor"
+            endpointName="actionBarAdvisor" kind="Simple"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.HyperbolaAdapterFactory"
+        x="616" y="621">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsEntry"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ApplicationActionBarAdvisor"
+        x="568" y="287">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.ChatAction"
+            endpointName="chatAction" kind="Simple"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.AddContactAction"
+            endpointName="addContactAction" kind="Simple"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ContactsView" x="44" y="491">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.Session"
+            endpointName="session" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.Session"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.Contact" x="17" y="51">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.Session" x="72" y="334">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="rootGroup" kind="Simple"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.AddContactDialog" x="302" y="489">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.ContactsGroup" x="45" y="178">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.eclipsercp.hyperbola.model.Contact"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="parent" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.IContactsListener"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ChatEditorInput" x="443" y="542">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.ContactsEntry" x="213" y="31">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.eclipsercp.hyperbola.model.Contact"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.Presence"
+            endpointName="presence" kind="Simple"/>
+        <Association
+            destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"
+            endpointName="group" kind="Simple"/>
+        <Communication destinationClassName="org.eclipsercp.hyperbola.model.ContactsGroup"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.ApplicationWorkbenchAdvisor"
+        x="34" y="657">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.model.Presence" x="209" y="247">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.Application" x="870" y="703">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.eclipsercp.hyperbola.IImageKeys" x="642" y="463">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+</ClassDiagram>
